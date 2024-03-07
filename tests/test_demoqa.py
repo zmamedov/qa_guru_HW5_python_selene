@@ -1,5 +1,3 @@
-from selene import browser, have
-
 from qa_guru_HW5_python_selene.pages.registration_page import RegistrationPage
 
 
@@ -18,23 +16,22 @@ def test_filling_form():
     registration_page.fill_subject('Chemistry')
     registration_page.click_hobby('Reading')
     registration_page.upload_picture('Chester-Mills.jpeg')
+    registration_page.fill_current_address('Chester-Mills, Center')
+    registration_page.fill_state('Haryana')
+    registration_page.fill_state_city('Karnal')
 
-
-
-    browser.element('#currentAddress').type('Chester-Mills, Center')
-    browser.element('#react-select-3-input').type('Haryana').press_enter()
-    browser.element('#react-select-4-input').type('Karnal').press_enter()
-
-    browser.element('#submit').click()
+    registration_page.submit()
 
     # Checking that all fields are filled correctly
-    browser.element('.table').should(have.text('Gercog Perkins'))
-    browser.element('.table').should(have.text('Chester@mail.com'))
-    browser.element('.table').should(have.text('Male'))
-    browser.element('.table').should(have.text('7890005670'))
-    browser.element('.table').should(have.text('16 January,1950'))
-    browser.element('.table').should(have.text('Chemistry'))
-    browser.element('.table').should(have.text('Reading'))
-    browser.element('.table').should(have.text('Chester-Mills.jpeg'))
-    browser.element('.table').should(have.text('Chester-Mills, Center'))
-    browser.element('.table').should(have.text('Haryana Karnal'))
+    registration_page.should_registered_user_with(
+        'Gercog Perkins',
+        'Chester@mail.com',
+        'Male',
+        '7890005670',
+        '16 January,1950',
+        'Chemistry',
+        'Reading',
+        'Chester-Mills.jpeg',
+        'Chester-Mills, Center',
+        'Haryana Karnal',
+    )
