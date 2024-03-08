@@ -1,6 +1,6 @@
 from selene import browser, have
 
-from qa_guru_HW5_python_selene.recource import path
+from qa_guru_HW5_python_selene.resource import path
 
 
 class RegistrationPage:

@@ -6,7 +6,6 @@ def test_filling_form():
 
     registration_page.open()
 
-    # Filling all fields in the form
     registration_page.fill_first_name('Gercog')
     registration_page.fill_last_name('Perkins')
     registration_page.fill_user_email('Chester@mail.com')
@@ -22,7 +21,6 @@ def test_filling_form():
 
     registration_page.submit()
 
-    # Checking that all fields are filled correctly
     registration_page.should_registered_user_with(
         'Gercog Perkins',
         'Chester@mail.com',
